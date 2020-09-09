@@ -179,6 +179,14 @@ const App = () => {
 							setOrderStatuses(nextStatuses);
 							localStorage.setItem('orderStatuses', JSON.stringify(nextStatuses));
 						}}
+						setCancelOrder={({ itemId }) => {
+							const nextStatuses = {...orderStatuses};
+
+							nextStatuses[itemId] = 'CANCELED';
+
+							setOrderStatuses(nextStatuses);
+							localStorage.setItem('orderStatuses', JSON.stringify(nextStatuses));
+						}}
 					/>
 				</Route>
 				<Route
