@@ -5,7 +5,7 @@ import refresh from '../img/refresh-button.svg';
 import './orders.css';
 
 
-const Orders = ({ order, orderStatuses, foodAreas, setFinishedOrder, setActiveOrder }) => {
+const Orders = ({ order, orderStatuses, foodAreas, setFinishedOrder, setActiveOrder, setCancelOrder }) => {
   const activeOrders = useMemo(() => {
     const activeOrdersList = Object.keys(orderStatuses)
       .filter(shopId => orderStatuses[shopId] === 'ACTIVE')
@@ -102,7 +102,7 @@ const Orders = ({ order, orderStatuses, foodAreas, setFinishedOrder, setActiveOr
             <button
               className="Orders__cancel"
               onClick={() => {
-                setFinishedOrder({ itemId: order.shopId });
+                setCancelOrder({ itemId: order.shopId });
                 let json = {}
                 json[order.shopId] = "CANCELED"
                 console.log(json)
