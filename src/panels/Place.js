@@ -26,6 +26,12 @@ const Place = ({ item, order, onIncrementPosition, onDecrementPosition, area }) 
     return accounting.formatNumber(result, 0, ' ');
   }, [ order, item ]);
 
+  let redirectTo = () => {
+      if (parseInt(price) > 0) {
+          return `/basket/${area.id}/${item.id}`
+      }
+  }
+
   return (
     <div className="Place">
       <header className="Place__header">
@@ -101,7 +107,7 @@ const Place = ({ item, order, onIncrementPosition, onDecrementPosition, area }) 
         )))}
       </ul>
       <footer className="Place__footer">
-        <Link to={`/basket/${area.id}/${item.id}`} className="Place__order">
+        <Link to={redirectTo()} className="Place__order">
           Оформить заказ ({price})
         </Link>
       </footer>
